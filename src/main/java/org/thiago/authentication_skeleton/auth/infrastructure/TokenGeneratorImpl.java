@@ -7,7 +7,7 @@ import com.auth0.jwt.exceptions.JWTVerificationException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.thiago.authentication_skeleton.auth.domain.TokenGenerator;
-import org.thiago.authentication_skeleton.auth.exceptions.TokenGenerationException;
+import org.thiago.authentication_skeleton.auth.domain.exceptions.TokenGenerationFailedException;
 
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
@@ -31,7 +31,7 @@ public class TokenGeneratorImpl implements TokenGenerator {
                     .withExpiresAt(genExpirationDate())
                     .sign(algorithm);
         } catch (JWTCreationException exception) {
-            throw new TokenGenerationException("Error while generating token", exception);
+            throw new TokenGenerationFailedException("Error while generating token", exception);
         }
     }
 
