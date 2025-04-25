@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>org.thiago</groupId>
-	<artifactId>authentication_skeleton</artifactId>
+	<artifactId>authentication-skeleton</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>user_ms</name>
 	<description>user_ms</description>
