@@ -1,12 +1,12 @@
-package org.thiago.authentication_skeleton.user.infrastructure;
+package org.thiago.authentication_skeleton.user.infrastructure.adapters;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
-import org.thiago.authentication_skeleton.user.domain.PasswordEncoderPort;
+import org.thiago.authentication_skeleton.user.application.ports.out.PasswordHasher;
 
 @Component
-public class PasswordEncoderAdapter implements PasswordEncoderPort {
+public class BCryptPasswordHasher implements PasswordHasher {
     private final PasswordEncoder encoder =
             new BCryptPasswordEncoder();
 

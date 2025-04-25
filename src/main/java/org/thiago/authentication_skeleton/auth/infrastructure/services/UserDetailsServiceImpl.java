@@ -1,8 +1,9 @@
-package org.thiago.authentication_skeleton.auth.infrastructure;
+package org.thiago.authentication_skeleton.auth.infrastructure.services;
 
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.thiago.authentication_skeleton.auth.infrastructure.CustomUserDetails;
 import org.thiago.authentication_skeleton.user.domain.User;
 import org.thiago.authentication_skeleton.user.domain.UserRepository;
 
