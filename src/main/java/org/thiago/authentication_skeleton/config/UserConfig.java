@@ -3,21 +3,14 @@ package org.thiago.authentication_skeleton.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.thiago.authentication_skeleton.user.application.usecases.GetMyUserUseCase;
-import org.thiago.authentication_skeleton.user.domain.UserRepository;
+import org.thiago.authentication_skeleton.user.domain.UserRepositoryPort;
 import org.thiago.authentication_skeleton.user.infrastructure.UserMapper;
-import org.thiago.authentication_skeleton.user.infrastructure.persistence.JpaUserRepository;
-import org.thiago.authentication_skeleton.user.infrastructure.persistence.UserRepositoryImpl;
 
 @Configuration
 public class UserConfig {
     @Bean
-    public GetMyUserUseCase createUserUseCase(UserRepository userRepository) {
+    public GetMyUserUseCase createUserUseCase(UserRepositoryPort userRepository) {
         return new GetMyUserUseCase(userRepository);
-    }
-
-    @Bean
-    public UserRepositoryImpl userRepository(JpaUserRepository jpaUserRepository, UserMapper userMapper) {
-        return new UserRepositoryImpl(jpaUserRepository, userMapper);
     }
 
     @Bean

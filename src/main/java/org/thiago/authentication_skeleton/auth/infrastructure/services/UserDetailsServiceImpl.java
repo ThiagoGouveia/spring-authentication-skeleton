@@ -5,14 +5,14 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.thiago.authentication_skeleton.auth.infrastructure.CustomUserDetails;
 import org.thiago.authentication_skeleton.user.domain.User;
-import org.thiago.authentication_skeleton.user.domain.UserRepository;
+import org.thiago.authentication_skeleton.user.domain.UserRepositoryPort;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-    private final UserRepository repository;
+    private final UserRepositoryPort repository;
 
-    public UserDetailsServiceImpl(UserRepository repository) {
+    public UserDetailsServiceImpl(UserRepositoryPort repository) {
         this.repository = repository;
     }
 

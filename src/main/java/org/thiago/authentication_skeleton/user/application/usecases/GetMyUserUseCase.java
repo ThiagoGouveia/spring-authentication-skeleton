@@ -3,15 +3,15 @@ package org.thiago.authentication_skeleton.user.application.usecases;
 import org.thiago.authentication_skeleton.user.application.dtos.GetMyUserResponseDto;
 import org.thiago.authentication_skeleton.user.application.exceptions.UserNotFoundException;
 import org.thiago.authentication_skeleton.user.domain.User;
-import org.thiago.authentication_skeleton.user.domain.UserRepository;
+import org.thiago.authentication_skeleton.user.domain.UserRepositoryPort;
 
 import java.util.Optional;
 
 public class GetMyUserUseCase {
 
-    private final UserRepository userRepository;
+    private final UserRepositoryPort userRepository;
 
-    public GetMyUserUseCase(UserRepository userRepository) {
+    public GetMyUserUseCase(UserRepositoryPort userRepository) {
         this.userRepository = userRepository;
     }
 

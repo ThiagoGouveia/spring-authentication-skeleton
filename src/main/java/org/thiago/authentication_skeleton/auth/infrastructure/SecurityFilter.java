@@ -1,5 +1,6 @@
 package org.thiago.authentication_skeleton.auth.infrastructure;
 
+import io.micrometer.common.lang.NonNull;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -12,7 +13,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import org.thiago.authentication_skeleton.auth.application.ports.out.TokenGenerator;
 import org.thiago.authentication_skeleton.auth.application.ports.out.TokenValidator;
 import org.thiago.authentication_skeleton.user.domain.User;
-import org.thiago.authentication_skeleton.user.domain.UserRepository;
+import org.thiago.authentication_skeleton.user.domain.UserRepositoryPort;
 
 import java.io.IOException;
 
@@ -20,16 +21,16 @@ import java.io.IOException;
 public class SecurityFilter extends OncePerRequestFilter {
     TokenGenerator tokenGenerator;
     TokenValidator tokenValidator;
-    UserRepository userRepository;
+    UserRepositoryPort userRepository;
 
-    public SecurityFilter(TokenGenerator tokenGenerator, TokenValidator tokenValidator,UserRepository userRepository) {
+    public SecurityFilter(TokenGenerator tokenGenerator, TokenValidator tokenValidator, UserRepositoryPort userRepository) {
         this.tokenGenerator = tokenGenerator;
         this.tokenValidator = tokenValidator;
         this.userRepository = userRepository;
     }
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+    protected void doFilterInternal(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull FilterChain filterChain) throws ServletException, IOException {
         String token = this.recoverToken(request);
         if (token != null) {
             String email = tokenValidator.validate(token);

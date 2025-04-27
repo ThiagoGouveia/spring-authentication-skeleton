@@ -7,18 +7,18 @@ import org.thiago.authentication_skeleton.auth.application.ports.out.TokenGenera
 import org.thiago.authentication_skeleton.user.domain.exceptions.EmailAlreadyExistsException;
 import org.thiago.authentication_skeleton.user.application.ports.out.PasswordHasher;
 import org.thiago.authentication_skeleton.user.domain.User;
-import org.thiago.authentication_skeleton.user.domain.UserRepository;
+import org.thiago.authentication_skeleton.user.domain.UserRepositoryPort;
 
 
 public class RegisterUseCase {
-    private final UserRepository userRepository;
+    private final UserRepositoryPort userRepository;
     private final RegisterDtoMapper userDtoMapper;
     private final PasswordHasher passwordEncoder;
     private final TokenGenerator tokenGenerator;
 
 
     public RegisterUseCase(
-            UserRepository userRepository,
+            UserRepositoryPort userRepository,
             RegisterDtoMapper userDtoMapper,
             PasswordHasher passwordEncoder,
             TokenGenerator tokenGenerator

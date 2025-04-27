@@ -13,18 +13,18 @@ import org.thiago.authentication_skeleton.auth.application.ports.out.TokenGenera
 import org.thiago.authentication_skeleton.auth.infrastructure.adapters.JwtValidator;
 import org.thiago.authentication_skeleton.auth.infrastructure.adapters.SpringAuthenticationChecker;
 import org.thiago.authentication_skeleton.user.application.ports.out.PasswordHasher;
-import org.thiago.authentication_skeleton.user.domain.UserRepository;
+import org.thiago.authentication_skeleton.user.domain.UserRepositoryPort;
 
 @Configuration
 public class AuthConfig {
 
     @Bean
-    public RegisterUseCase registerUseCase(UserRepository userRepository, RegisterDtoMapper userDtoMapper, PasswordHasher passwordEncoder, TokenGenerator tokenGenerator) {
+    public RegisterUseCase registerUseCase(UserRepositoryPort userRepository, RegisterDtoMapper userDtoMapper, PasswordHasher passwordEncoder, TokenGenerator tokenGenerator) {
         return new RegisterUseCase(userRepository, userDtoMapper, passwordEncoder, tokenGenerator);
     }
 
     @Bean
-    public LoginUseCase loginUseCase(TokenGenerator tokenGenerator, AuthenticationChecker authenticationChecker, LoginDtoMapper loginDtoMapper, UserRepository userRepository) {
+    public LoginUseCase loginUseCase(TokenGenerator tokenGenerator, AuthenticationChecker authenticationChecker, LoginDtoMapper loginDtoMapper, UserRepositoryPort userRepository) {
         return new LoginUseCase(tokenGenerator, authenticationChecker, loginDtoMapper, userRepository);
     }
 

@@ -7,16 +7,16 @@ import org.thiago.authentication_skeleton.auth.domain.AuthUser;
 import org.thiago.authentication_skeleton.auth.application.ports.out.AuthenticationChecker;
 import org.thiago.authentication_skeleton.auth.domain.Token;
 import org.thiago.authentication_skeleton.auth.application.ports.out.TokenGenerator;
-import org.thiago.authentication_skeleton.user.domain.UserRepository;
+import org.thiago.authentication_skeleton.user.domain.UserRepositoryPort;
 import org.thiago.authentication_skeleton.user.domain.exceptions.EmailDoNotExistsException;
 
 public class LoginUseCase {
     private final TokenGenerator tokenGenerator;
     private final AuthenticationChecker authenticationChecker;
     private final LoginDtoMapper loginDtoMapper;
-    private final UserRepository userRepository;
+    private final UserRepositoryPort userRepository;
 
-    public LoginUseCase(TokenGenerator tokenGenerator, AuthenticationChecker authenticationChecker, LoginDtoMapper loginDtoMapper, UserRepository userRepository) {
+    public LoginUseCase(TokenGenerator tokenGenerator, AuthenticationChecker authenticationChecker, LoginDtoMapper loginDtoMapper, UserRepositoryPort userRepository) {
         this.tokenGenerator = tokenGenerator;
         this.authenticationChecker = authenticationChecker;
         this.loginDtoMapper = loginDtoMapper;
